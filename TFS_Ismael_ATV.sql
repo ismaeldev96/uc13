@@ -56,6 +56,12 @@ INSERT INTO ClasseHabilidades VALUES(2,3),(2,2)
 
 UPDATE Usuarios SET UsuarioNome = 'Aphonso' WHERE UsuarioId = 1
 
+INSERT INTO Usuarios(UsuarioEmail, UsuarioSenha, UsuarioNome) VALUES('ismael35@email.com','abc123','Ismael')
+INSERT INTO Classes VALUES('Mago', 'Descrição da classe')
+INSERT INTO Habilidades VALUES('Feitiço de Paralização', 'Descrição da Habilidade')
+INSERT INTO Personagens VALUES('Gandalf', 3, 3)
+INSERT INTO ClasseHabilidades VALUES(3,3),(3,2)
+
 --DQL
 SELECT UsuarioNome, UsuarioEmail, UsuarioSenha FROM Usuarios 
 SELECT ClasseNome FROM Classes
@@ -71,3 +77,11 @@ SELECT PersonagemNome, Classes.ClasseNome, Classes.ClassDescricao FROM Personage
 
 -- abreviando o nome das tabelas
 SELECT PersonagemNome, C.ClasseNome, C.ClassDescricao FROM Personagens INNER JOIN Classes AS C ON Personagens.ClasseId = C.ClasseId
+
+
+
+-- criando usuario jogador com limitação de acesso
+CREATE LOGIN estudante 
+WITH PASSWORD = '1234'
+CREATE USER estudante FOR LOGIN estudante
+GRANT SELECT TO estudante
